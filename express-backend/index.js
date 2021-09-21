@@ -14,5 +14,8 @@ app.get('/amalanu', (req, res) => {
 	res.send('This is my url');
 })
 
-app.listen(80, () => console.log('Listening on port 80'));
+app.get('/main', (req, res) => {
+	res.send('Welcome to Bronco Buddies, find your friends and gallop away!');
+})
 
+app.listen(80, () => console.log('Listening on port 80'));
