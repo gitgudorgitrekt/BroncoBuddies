@@ -10,5 +10,9 @@ app.get('/members', (req, res) => {
 	res.send('Benjamin Aldrich, Amal Anu, William Armstrong, Clarence-Hugues Domond, Celine Mangahas');
 })
 
+app.get('/amalanu', (req, res) => {
+	res.send('This is my url');
+})
+
 app.listen(80, () => console.log('Listening on port 80'));
 
