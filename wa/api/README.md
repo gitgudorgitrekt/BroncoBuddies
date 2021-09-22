@@ -1,7 +1,9 @@
 To use:
 
+npm install http-server
+
 npm install upper-case
 
-npm run script.js
+node script.js
 
 Go to localhost:8080
