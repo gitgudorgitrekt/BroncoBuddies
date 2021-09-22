@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/gitgudorgitrekt/BroncoBuddies#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "xml2js": "^0.4.23"
   }
 }
