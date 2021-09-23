@@ -2,8 +2,9 @@ import Button from 'react-bootstrap/Button';
 
 function App() {
     return (
+        // From Clarence
         <>
-          <Button variant="primary">
+          <Button>
               HTTP API using 3rd party library React Bootstrap
           </Button>
         </>
