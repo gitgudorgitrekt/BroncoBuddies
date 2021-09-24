@@ -5,6 +5,34 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch Example0",
+            "request": "launch",
+            "mainClass": "Example0",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "Launch script",
+            "request": "launch",
+            "mainClass": "script",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "Launch script",
+            "request": "launch",
+            "mainClass": "sample.script",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "Launch SimpleRealTime",
+            "request": "launch",
+            "mainClass": "sample.SimpleRealTime",
+            "projectName": ""
+        },
+        {
             "type": "pwa-chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
