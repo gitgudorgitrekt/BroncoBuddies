@@ -1,7 +1,10 @@
 {
-    "client": "cd my-app && npm start",
-    "server": "nodemon index.js",
-    "build": "cd client && npm run build",
-    "dev": "concurrently --kill-others-on-fail \"npm server\" \"npm client\"",
-    "start": "node index.js"
+    "scripts": {
+        "client": "cd client && npm start",
+        "server": "nodemon index.js",
+        "build": "cd my-app && npm run build",
+        "dev": "concurrently --kill-others-on-fail \"npm server\" \"npm client\"",
+        "start": "node server.js",
+        "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+      }
 }
