@@ -1,8 +1,9 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const app = express();
 const http = require('http').createServer
 
-Mongoose.connect('mongodb+srv://Owner:gitgudbronco@cluster0.dmveh.mongodb.net/students')
+mongoose.connect('mongodb+srv://Owner:gitgudbronco@cluster0.dmveh.mongodb.net/students')
 
 //basic hello world function
 app.get('/', (req, res) => {
