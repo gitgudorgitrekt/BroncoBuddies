@@ -3,6 +3,11 @@ const mongoose = require('mongoose');
 const app = express();
 const http = require('http').createServer
 
+app.use(express.static(path.join(__dirname, "client/build")));
+  app.get("*", (req, res)=>{
+    res.sendFile(path.join(__dirname, "client/build",'index.html'));
+  })
+
 mongoose.connect('mongodb+srv://Owner:gitgudbronco@cluster0.dmveh.mongodb.net/students')
 
 //basic hello world function
