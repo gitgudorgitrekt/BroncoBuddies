@@ -1,0 +1,7 @@
+{
+    "client": "cd my-app && npm start",
+    "server": "nodemon index.js",
+    "build": "cd client && npm run build",
+    "dev": "concurrently --kill-others-on-fail \"npm server\" \"npm client\"",
+    "start": "node index.js"
+}
