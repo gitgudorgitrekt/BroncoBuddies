@@ -18,6 +18,13 @@
   "homepage": "https://github.com/gitgudorgitrekt/BroncoBuddies#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "mongoose": "^6.0.8",
     "xml2js": "^0.4.23"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }

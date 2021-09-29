@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const http = require('http').createServer
 
+Mongoose.connect('mongodb+srv://Owner:gitgudbronco@cluster0.dmveh.mongodb.net/students')
+
 //basic hello world function
 app.get('/', (req, res) => {
 	res.send('Hello world');
@@ -33,5 +35,8 @@ app.get('/xml2js-test', (req, res) => {
 	res.send(json);
 })
 
-
-app.listen(80, () => console.log('Listening on port 80'));
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+app.listen(port);
