@@ -3,7 +3,7 @@
         "frontend": "cd my-app && npm start",
         "api": "cd express-backend && nodemon index.js",
         "dev": "concurrently --kill-others-on-fail \"npm run api\" \"npm run my-app\"",
-        "heroku-postbuild": "cd frontend && npm install && npm run build"
+        "heroku-postbuild": "cd my-app && npm install && npm run build"
     },
     "dependencies": {
         "express": "^4.17.1",
