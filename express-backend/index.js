@@ -1,48 +1,26 @@
-const express = require('express');
-const mongoose = require('mongoose');
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+
+import postRoutes from './routes/posts.js';
+
 const app = express();
 const http = require('http').createServer
 
-app.use(express.static(path.join(__dirname, "client/build")));
-  app.get("*", (req, res)=>{
-    res.sendFile(path.join(__dirname, "client/build",'index.html'));
-  })
+app.use(express.json({ limit: "30mb", extended: true}));
+app.use(express.urlencoded({ limit: "30mb", extended: true}));
+app.use(cors());
 
-mongoose.connect('mongodb+srv://Owner:gitgudbronco@cluster0.dmveh.mongodb.net/students')
+app.use('/posts', postRoutes);
 
-//basic hello world function
 app.get('/', (req, res) => {
-	res.send('Hello world');
-})
-
-//test function
-app.get('/members', (req, res) => {
-	res.send('Benjamin Aldrich, Amal Anu, William Armstrong, Clarence-Hugues Domond, Celine Mangahas');
-})
-
-//HTTP API for Amal Anu
-app.get('/amalanu', (req, res) => {
-	res.send('This is my url');
-})
-
-app.get('/main', (req, res) => {
-	res.send('Welcome to Bronco Buddies, find your friends and gallop away!');
-})
-
-//xml2js function for Amal Anu
-var parseString = require('xml2js').parseString;
-var xml = "<root>This is a test xml</root>"
-var json;
-parseString(xml, function (err, result) {
-	json = result;
-    console.dir(result);
+	res.send('Welcome to BroncoBuddies API');
 });
-app.get('/xml2js-test', (req, res) => {
-	res.send(json);
-})
 
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 8000;
-}
-app.listen(port);
+const PORT = process.env.PORT || 5000;
+
+mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true})
+	.then(() => app.listen(PORT, () => console.log('Server running on port: ${PORT}')))
+	.catch((error) => console.log(error.message));
+
+mongoose.set('useFindAndModify', false);
