@@ -1,0 +1,13 @@
+{
+    "scripts": {
+        "frontend": "cd my-app && npm start",
+        "api": "cd express-backend && nodemon index.js",
+        "dev": "concurrently --kill-others-on-fail \"npm run api\" \"npm run my-app\"",
+        "heroku-postbuild": "cd frontend && npm install && npm run build"
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "mongoose": "^6.0.9",
+        "nodemon": "^2.0.13"
+    }
+}

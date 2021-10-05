@@ -3,6 +3,14 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
+const path = require('path')
+
+app.use(express.static(path.join(__dirname, '../my-app/build')))
+
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname + '/../my-app/build/index.html'))
+  })
+
 import postRoutes from './routes/posts.js';
 dotenv.config();
 
