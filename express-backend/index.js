@@ -4,10 +4,12 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path'
 
+dotenv.config();
+
 import postRoutes from './routes/posts.js';
 
 const app = express();
-dotenv.config();
+
 
 const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, '../my-app/build')))
