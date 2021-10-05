@@ -7,7 +7,7 @@ import path from 'path'
 import postRoutes from './routes/posts.js';
 
 const app = express();
-const http = require('http').createServer
+// const http = require('http').createServer
 
 dotenv.config();
 
