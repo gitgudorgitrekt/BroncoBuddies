@@ -1,4 +1,5 @@
 {
+    "type": "module",
     "scripts": {
         "my-app": "cd my-app && npm start",
         "backend": "cd express-backend && nodemon index.js",
