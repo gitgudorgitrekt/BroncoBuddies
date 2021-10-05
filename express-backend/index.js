@@ -4,17 +4,18 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path'
 
+import postRoutes from './routes/posts.js';
+
+const app = express();
+const http = require('http').createServer
+
+dotenv.config();
+
 app.use(express.static(path.join(__dirname, '../my-app/build')))
 
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname + '/../my-app/build/index.html'))
   })
-
-import postRoutes from './routes/posts.js';
-dotenv.config();
-
-const app = express();
-const http = require('http').createServer
 
 app.use(express.json({ limit: "30mb", extended: true}));
 app.use(express.urlencoded({ limit: "30mb", extended: true}));
