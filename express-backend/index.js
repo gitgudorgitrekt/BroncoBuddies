@@ -2,8 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
-
-const path = require('path')
+import path from 'path'
 
 app.use(express.static(path.join(__dirname, '../my-app/build')))
 
