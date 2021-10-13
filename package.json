@@ -2,6 +2,7 @@
     "scripts": {
         "my-app": "cd my-app && npm start",
         "backend": "cd express-backend && nodemon index.js",
+        "test": "mocha || true",
         "dev": "concurrently --kill-others-on-fail \"npm run backend\" \"npm run my-app\"",
         "heroku-postbuild": "cd my-app && npm install && npm run build"
     },
