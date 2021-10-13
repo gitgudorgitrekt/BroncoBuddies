@@ -1,9 +1,18 @@
 import React from 'react';
-import { Container, AppBar, Typography, Grow, Grid} from '@material-ui/core';
+import { Container, AppBar, Typography, Grow, Grid, ExpansionPanelActions} from '@material-ui/core';
 import Posts from './components/Posts/Posts';
 import Form from './components/Form/Form';
 import useStyles from './styles'
 //import name from './images/name.png';
+
+import Enzyme, { shallow } from 'enzyme';
+describe('Form', ()=>{
+    it('', ()=>{
+        const wrapper = shallow(<Form>Word</Form>);
+        expect(Form).toHaveLength(1);
+
+    })
+});
 
 const App = () => {
     const classes = useStyles();
