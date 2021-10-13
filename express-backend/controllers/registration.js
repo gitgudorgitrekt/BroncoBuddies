@@ -7,11 +7,11 @@ export const register = async (req, res) => {
 	const { username, password: plainTextPassword } = req.body;
 
 	if (!username || typeof username != 'string') {
-		return res.json({ status: 'error', error: 'Invalid username'})
+		return res.json({ status: 'not acceptable'})
 	}
 
 	if (!plainTextPassword || typeof plainTextPassword != 'string') {
-		return res.json({ status: 'error', error: 'Invalid password'})
+		return res.json({ status: 'not acceptable'})
 	}
 
 	console.log(await bcrypt.hash(plainTextPassword, 15));
@@ -24,7 +24,7 @@ export const register = async (req, res) => {
 		console.log('User created:', response);
 	} catch(error) {
 		if (error.code == 11000) {
-			return res.json({ status: 'error', error: 'Username already in use'})
+			return res.json({ status: 'not acceptable'})
 		}
 		throw error;
 	}
