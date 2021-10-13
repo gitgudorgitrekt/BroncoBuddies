@@ -38,6 +38,10 @@ app.get('/', (req, res) => {
 	res.send('Welcome to BroncoBuddies API');
 });
 
+<<<<<<< HEAD
 const url = process.env.CONNECTION_URL;
 
 export default app;
+=======
+// const url = process.env.CONNECTION_URL;
+>>>>>>> e6d2037ff047f5bc639df3ffe00cb361c33912b1
