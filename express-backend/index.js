@@ -4,7 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
 import bcrypt from 'bcrypt';
-import registration from './routes/register.js'
+import registration from './routes/registration.js'
 import postRoutes from './routes/posts.js';
 
 dotenv.config();
@@ -38,4 +38,4 @@ app.get('/', (req, res) => {
 	res.send('Welcome to BroncoBuddies API');
 });
 
-const url = process.env.CONNECTION_URL;
+// const url = process.env.CONNECTION_URL;

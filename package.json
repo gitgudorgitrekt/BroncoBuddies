@@ -4,9 +4,13 @@
         "backend": "cd express-backend && nodemon index.js",
         "test": "mocha || true",
         "dev": "concurrently --kill-others-on-fail \"npm run backend\" \"npm run my-app\"",
-        "heroku-postbuild": "cd my-app && npm install && npm run build"
+        "heroku-postbuild": "cd my-app && npm install && npm run build",
+        "test": "mocha test"
     },
+    "type": "module",
     "dependencies": {
+        "bcrypt": "^5.0.1",
+        "chai-http": "^4.3.0",
         "cors": "^2.8.5",
         "dotenv": "^10.0.0",
         "express": "^4.17.1",
@@ -17,5 +21,9 @@
     },
     "engines": {
         "node": "14.16.0"
+    },
+    "devDependencies": {
+        "chai": "^4.3.4",
+        "nyc": "^15.1.0"
     }
 }
