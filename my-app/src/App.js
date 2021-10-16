@@ -5,14 +5,14 @@ import Form from './components/Form/Form';
 import useStyles from './styles'
 //import name from './images/name.png';
 
-import Enzyme, { shallow } from 'enzyme';
-describe('Form', ()=>{
-    it('', ()=>{
-        const wrapper = shallow(<Form>Word</Form>);
-        expect(Form).toHaveLength(1);
+// import Enzyme, { shallow } from 'enzyme';
+// describe('Form', ()=>{
+//     it('', ()=>{
+//         const wrapper = shallow(<Form>Word</Form>);
+//         expect(Form).toHaveLength(1);
 
-    })
-});
+//     })
+// });
 
 const App = () => {
     const classes = useStyles();
