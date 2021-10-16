@@ -11,10 +11,7 @@
     "type": "module",
     "dependencies": {
         "bcrypt": "^5.0.1",
-<<<<<<< HEAD
         "chai": "^4.3.4",
-=======
->>>>>>> e6d2037ff047f5bc639df3ffe00cb361c33912b1
         "chai-http": "^4.3.0",
         "cors": "^2.8.5",
         "dotenv": "^10.0.0",
