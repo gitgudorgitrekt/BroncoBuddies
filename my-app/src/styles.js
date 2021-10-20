@@ -15,4 +15,9 @@ export default makeStyles(() =>({
       image: {
         marginLeft: '15px',
       },
+
+      topnav: {
+        backgroundcolor: rgba(0,183,255, 1),
+        overflow: hidden,
+      },
 }));
