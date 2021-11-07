@@ -21,10 +21,10 @@ app.use('/api/register', registration);
 
 app.use('/posts', postRoutes);
 
-const CONNECTION_URL = 'mongodb+srv://mongodbaanu:3DPkJp1g9SZlAwH3@cluster0.dmveh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const url = process.env.CONNECTION_URL || 'mongodb+srv://mongodbaanu:3DPkJp1g9SZlAwH3@cluster0.dmveh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 	.then(() => app.listen(PORT, () => console.log('Server running on port: $', PORT)))
 	.catch((error) => console.log(error.message));
 
@@ -40,6 +40,6 @@ app.get('/', (req, res) => {
 	res.send('Welcome to BroncoBuddies API');
 });
 
-const url = process.env.CONNECTION_URL;
+
 
 export default app;
