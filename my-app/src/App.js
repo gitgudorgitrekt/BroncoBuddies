@@ -31,6 +31,9 @@ const App = () => {
                     className={classes.heading} variant="h2" align="center">
                         Bronco Buddies
                 </Typography>
+                <div className='App'>
+                    <Navbar />
+                </div>
             </AppBar>
             <Grow in>
                 <Container>
