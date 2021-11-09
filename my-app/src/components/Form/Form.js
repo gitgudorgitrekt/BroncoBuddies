@@ -7,7 +7,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import useStyles from './styles';
 import { createPost, updatePost } from '../../actions/posts';
 
+<<<<<<< HEAD
 const Form =  ({ currentId, setCurrentId }) => {
+=======
+const Form =  ({currentId, setCurrentId}) => {
+>>>>>>> e7d93eb481be06ad97b8effc2743be5fa2e7cef3
     const [postData, setPostData] = useState({
         creator: '', title: '', message: '',tags: '', selectedFile:''
     });
@@ -15,9 +19,24 @@ const Form =  ({ currentId, setCurrentId }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
 
+<<<<<<< HEAD
     useEffect(() => {
         if(post) setPostData(post);
     }, [post])
+=======
+    useEffect(()=> {
+        if(post) setPostData(post);
+    }, [post]);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if(currentId){
+            dispatch(updatePost(currentId,postData))
+        }else{
+            dispatch(createPost(postData));
+        }
+    }
+>>>>>>> e7d93eb481be06ad97b8effc2743be5fa2e7cef3
 
     const clear = () => {
         setCurrentId(null)
@@ -69,18 +88,18 @@ const Form =  ({ currentId, setCurrentId }) => {
                     label="Tags"
                     fullWidth
                     value={postData.tags}
-                    onChange={(e) => setPostData({...postData, tags: e.target.value})}/>
-                <dive className={classes.fileInput}>
+                    onChange={(e) => setPostData({...postData, tags: e.target.value.split(',')})}/>
+                <div className={classes.fileInput}>
                     <FileBase
                         type="file"
                         multiple={false}
                         onDone={({base64})=>setPostData({...postData, selectedFile: base64})}
                     />
-                     </dive>
-                <Button className={classes.buttonSubmit} variant="container" color="primary" size="large" type="submit" fullWidth>
+                     </div>
+                <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>
                     Submit
                 </Button>
-                <Button variant="contained" color="secodary" size="small" onClick={clear} fullWidth>
+                <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>
                     Clear
                 </Button>
                

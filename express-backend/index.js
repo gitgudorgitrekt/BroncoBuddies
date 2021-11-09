@@ -21,11 +21,19 @@ app.use('/api/register', registration);
 
 app.use('/posts', postRoutes);
 
+<<<<<<< HEAD
 const CONNECTION_URL = process.env.REACT_APP_CONNECTION_URL;
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 	.then(() => app.listen(PORT, () => console.log(`Server running on port: ${PORT}`)))
+=======
+const url = process.env.CONNECTION_URL || 'mongodb+srv://mongodbaanu:3DPkJp1g9SZlAwH3@cluster0.dmveh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const PORT = process.env.PORT || 5000;
+
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+	.then(() => app.listen(PORT, () => console.log('Server running on port: $', PORT)))
+>>>>>>> e7d93eb481be06ad97b8effc2743be5fa2e7cef3
 	.catch((error) => console.log(error.message));
 
 const __dirname = path.resolve();
@@ -40,4 +48,9 @@ app.get('/', (req, res) => {
 	res.send('Welcome to BroncoBuddies API');
 });
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> e7d93eb481be06ad97b8effc2743be5fa2e7cef3
 export default app;
