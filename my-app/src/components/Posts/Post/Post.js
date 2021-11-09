@@ -7,13 +7,9 @@ import moment from 'moment';
 import useStyles from './styles';
 import { useDispatch } from 'react-redux';
 
-<<<<<<< HEAD
-const Post =  ({post, setCurrentId }) => {
-=======
 import { deletePost, likePost } from '../../../actions/posts';
 
-const Post =  ({post, setCurrentId}) => {
->>>>>>> e7d93eb481be06ad97b8effc2743be5fa2e7cef3
+const Post =  ({ post, setCurrentId }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
     return(
@@ -24,18 +20,6 @@ const Post =  ({post, setCurrentId}) => {
                 <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
             </div>
             <div className={classes.overlay2}>
-<<<<<<< HEAD
-                <Button style={{color:'white'}} size="small" onClick={() => setCurrentId(post._id)}>
-                    <MoreHorizIcon fontSize="default"/>
-                </Button>
-            </div>
-            <div className={classes.details}> 
-                <Typography variant="body2" color="textSecondary">{post.tag.map((tag) => `#${tag}`)}</Typography>
-            </div>
-            <Typography className={classes.title} variant="h5" gutterBottom>{post.title}</Typography>
-            <CardContent>
-                <Typography variant="h5" gutterBottom>{post.message}</Typography>
-=======
                 <Button style={{color:'white'}} size="small" onClick={() => setCurrentId(post.id)}>
                     <MoreHorizIcon fontSize="medium"/>
                 </Button>
@@ -46,7 +30,6 @@ const Post =  ({post, setCurrentId}) => {
             <Typography className={classes.title} variant="h5" gutterBottom>{post.title}</Typography>
             <CardContent>
                 <Typography className={classes.message} variant="body2" color="textSecondary" gutterBottom>{post.message}</Typography>
->>>>>>> e7d93eb481be06ad97b8effc2743be5fa2e7cef3
             </CardContent>
             <CardActions className={classes.cardActions}> 
                 <Button size="small" color="primary" onClick={() => {dispatch(likePost(post.id))}}>
@@ -59,7 +42,6 @@ const Post =  ({post, setCurrentId}) => {
                     Delete
                 </Button>
             </CardActions>
-
         </Card>
     );
 }
