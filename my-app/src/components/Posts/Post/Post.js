@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 
 import { deletePost, likePost } from '../../../actions/posts';
 
-const Post =  ({post, setCurrentId}) => {
+const Post =  ({ post, setCurrentId }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
     return(
@@ -20,7 +20,7 @@ const Post =  ({post, setCurrentId}) => {
                 <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
             </div>
             <div className={classes.overlay2}>
-                <Button style={{color:'white'}} size="small" onClick={() => setCurrentId(post.id)}>
+                <Button style={{color:'white'}} size="small" onClick={() => setCurrentId(post._id)}>
                     <MoreHorizIcon fontSize="medium"/>
                 </Button>
             </div>
@@ -32,17 +32,16 @@ const Post =  ({post, setCurrentId}) => {
                 <Typography className={classes.message} variant="body2" color="textSecondary" gutterBottom>{post.message}</Typography>
             </CardContent>
             <CardActions className={classes.cardActions}> 
-                <Button size="small" color="primary" onClick={() => {dispatch(likePost(post.id))}}>
+                <Button size="small" color="primary" onClick={() => {dispatch(likePost(post._id))}}>
                     <ThumbUpAltIcon fontSize="small"/>
                     &nbsp; Like &nbsp;
                     {post.likeCount}
                 </Button>
-                <Button size="small" color="primary" onClick={() => {dispatch(deletePost(post.id))}}>
+                <Button size="small" color="primary" onClick={() => {dispatch(deletePost(post._id))}}>
                     <DeleteIcon fontSize="small"/>
                     Delete
                 </Button>
             </CardActions>
-
         </Card>
     );
 }

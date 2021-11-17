@@ -6,16 +6,6 @@ import {getPosts} from './actions/posts';
 import Posts from './components/Posts/Posts';
 import Form from './components/Form/Form';
 import useStyles from './styles';
-//import name from './images/name.png';
-
-// import Enzyme, { shallow } from 'enzyme';
-// describe('Form', ()=>{
-//     it('', ()=>{
-//         const wrapper = shallow(<Form>Word</Form>);
-//         expect(Form).toHaveLength(1);
-
-//     })
-// });
 
 const App = () => {
     const [currentId, setCurrentId] = useState(null);
@@ -24,7 +14,7 @@ const App = () => {
 
     useEffect(()=>{
         dispatch(getPosts());
-    }, [dispatch]);
+    }, [currentId, dispatch]);
     return (
         <Container >
             <AppBar className={classes.appBar} position="static" color="inherit">
@@ -35,12 +25,12 @@ const App = () => {
             </AppBar>
             <Grow in>
                 <Container>
-                    <Grid container  direction="row" justifyContent="flex-start" alignItems="flex-start" spacing={2}>
+                    <Grid className={classes.mainContainer} container justifyContent="flex-start" alignItems="stretch" spacing={2} justify="space-between">
                         <Grid item xs={12} sm={8} md={6}>
                             <Posts setCurrentId={setCurrentId}/>
                             </Grid>
                         <Grid item xs={12} sm={8} md={6}>
-                            <Form currentId={currentId}/>
+                            <Form currentId={currentId} setCurrentId={setCurrentId}/>
                             </Grid>
                     </Grid>
                 </Container>
