@@ -12,13 +12,12 @@ const app = express();
 
 app.use(express.json({ limit: "30mb", extended: true}));
 app.use(express.urlencoded({ limit: "30mb", extended: true}));
-// app.use(cors());
-// app.get('/api', (req, res) => {
-// 	res.set("Access-Control-Allow-Origin", 'https://broncobuddiescpp.netlify.app', 'http://localhost:3000');
-// 	res.set("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-// 	res.set("Access-Control-Allow-Credentials", true);
-// 	res.send({ "msg": "This has CORS enabled 🎈" })
-// 	})
+app.use(cors());
+app.get('/api', (req, res) => {
+	res.set("Access-Control-Allow-Origin", 'https://broncobuddiescpp.netlify.app', 'http://localhost:3000');
+	res.set("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+	res.send({ "msg": "This has CORS enabled 🎈" })
+	})
 app.use('/api/register', registration);
 
 app.use('/posts', postRoutes);
