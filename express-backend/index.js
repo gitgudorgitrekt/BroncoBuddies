@@ -13,10 +13,10 @@ const app = express();
 app.use(express.json({ limit: "30mb", extended: true}));
 app.use(express.urlencoded({ limit: "30mb", extended: true}));
 app.use(cors());
-//TODO change * later to allow specific clients to access our server
 app.get('/cors', (req, res) => {
-	res.set('Access-Control-Allow-Origin', 'https://broncobuddiescpp.netlify.app', 'http://localhost:3000/');
-	res.header("Access-Control-Allow-Origin", 'https://broncobuddiescpp.netlify.app', 'http://localhost:3000/');
+	res.header("Access-Control-Allow-Origin", 'https://broncobuddiescpp.netlify.app', 'http://localhost:3000');
+	res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+	res.header("Access-Control-Allow-Credentials", true);
 	res.send({ "msg": "This has CORS enabled 🎈" })
 	})
 app.use('/api/register', registration);
