@@ -16,6 +16,7 @@ app.use(cors());
 //TODO change * later to allow specific clients to access our server
 app.get('/cors', (req, res) => {
 	res.set('Access-Control-Allow-Origin', '*');
+	res.header("Access-Control-Allow-Origin", '*');
 	res.send({ "msg": "This has CORS enabled 🎈" })
 	})
 app.use('/api/register', registration);
