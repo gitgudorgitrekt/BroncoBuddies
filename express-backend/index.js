@@ -13,7 +13,7 @@ const app = express();
 app.use(express.json({ limit: "30mb", extended: true}));
 app.use(express.urlencoded({ limit: "30mb", extended: true}));
 app.use(cors());
-app.get('/cors', (req, res) => {
+app.get('/api', (req, res) => {
 	res.header("Access-Control-Allow-Origin", 'https://broncobuddiescpp.netlify.app', 'http://localhost:3000');
 	res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
 	res.header("Access-Control-Allow-Credentials", true);
