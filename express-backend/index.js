@@ -13,7 +13,10 @@ const app = express();
 app.use(express.json({ limit: "30mb", extended: true}));
 app.use(express.urlencoded({ limit: "30mb", extended: true}));
 app.use(cors());
-
+app.get('/cors', (req, res) => {
+	res.set('Access-Control-Allow-Origin', '*');
+	res.send({ "msg": "This has CORS enabled 🎈" })
+	})
 app.use('/api/register', registration);
 
 app.use('/posts', postRoutes);
