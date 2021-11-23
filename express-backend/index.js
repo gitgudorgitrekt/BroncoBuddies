@@ -9,16 +9,20 @@ import postRoutes from './routes/posts.js';
 
 dotenv.config();
 const app = express();
-const corsOptions ={
-   origin:'*', 
-   credentials:true,            //access-control-allow-credentials:true
-   optionSuccessStatus:200,
-}
-//'https://broncobuddiescpp.netlify.app', 'http://localhost:3000'
+
+
 
 app.use(express.json({ limit: "30mb", extended: true}));
 app.use(express.urlencoded({ limit: "30mb", extended: true}));
-app.use(cors(corsOptions));
+app.use(cors());
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", '*');
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+  next();
+});
+//'https://broncobuddiescpp.netlify.app', 'http://localhost:3000'
 app.use('/api/register', registration);
 
 app.use('/posts', postRoutes);
