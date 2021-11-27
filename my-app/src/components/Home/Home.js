@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react';
 import { useDispatch } from 'react-redux';
 import { getPosts } from '../../actions/posts';
 import { Container, Grow, Grid } from '@material-ui/core';
-
+import Navbar from '../Navbar/Navbar';
 import Posts from '../Posts/Posts';
 import Form from '../Form/Form';
 
@@ -18,6 +18,7 @@ const Home = () => {
     return (
         <Grow in>
             <Container>
+                <Navbar/>
                 <Grid container alignItems="stretch" spacing={2} justify="space-between">
                     <Grid item xs={12} sm={7}>
                         <Posts setCurrentId={setCurrentId} />
