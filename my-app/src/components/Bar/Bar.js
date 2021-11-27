@@ -30,4 +30,4 @@ const Bar = () => {
     );
 };
 
-export default Navbar
+export default Bar
