@@ -12,11 +12,13 @@ const Bar = () => {
     return (
         <AppBar className={classes.appBar} position="static" color="inherit">
             <Toolbar disableGutters>
+            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                 <Menu id="menu-appbar">
                     <MenuItem component={Link} to="/test">
                         <Typography textAlign="center">Test</Typography>
                     </MenuItem>
                 </Menu>
+            </Box>
             </Toolbar>
         </AppBar>
     );
