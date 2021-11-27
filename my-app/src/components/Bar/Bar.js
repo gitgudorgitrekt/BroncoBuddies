@@ -11,11 +11,13 @@ const Bar = () => {
 
     return (
         <AppBar className={classes.appBar} position="static" color="inherit">
-            <Menu id="menu-appbar">
-                <MenuItem onClick={handleCloseNavMenu} component={Link} to="/test">
-                    <Typography textAlign="center">Test</Typography>
-                </MenuItem>
-            </Menu>
+            <Toolbar disableGutters>
+                <Menu id="menu-appbar">
+                    <MenuItem component={Link} to="/test">
+                        <Typography textAlign="center">Test</Typography>
+                    </MenuItem>
+                </Menu>
+            </Toolbar>
         </AppBar>
     );
 };
