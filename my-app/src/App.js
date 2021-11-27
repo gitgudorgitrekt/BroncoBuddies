@@ -7,7 +7,6 @@ import Posts from './components/Posts/Posts';
 import Form from './components/Form/Form';
 import useStyles from './styles'
 
-import './App.css';
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from './pages';
