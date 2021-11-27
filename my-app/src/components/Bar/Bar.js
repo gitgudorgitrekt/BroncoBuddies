@@ -12,7 +12,7 @@ const Bar = () => {
     return (
         <AppBar className={classes.appBar} position="static" color="inherit">
             <Toolbar className={classes.toolbar}>
-                <Button component={Link} to="/test" variant="text" color="primary">Test</Button>
+                <Button component={Link} to="/" variant="text" color="primary">Test</Button>
             </Toolbar>
         </AppBar>
     );
