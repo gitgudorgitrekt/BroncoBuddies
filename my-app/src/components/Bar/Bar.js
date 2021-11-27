@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppBar, Button, Toolbar, Typography, Menu, MenuItem, Avatar } from '@material-ui/core'
+import { AppBar, Button, Toolbar, Typography, Menu, MenuItem, Box, Avatar } from '@material-ui/core'
 import { Link } from 'react-router-dom';
 
 import useStyles from './barstyles'
@@ -11,14 +11,8 @@ const Bar = () => {
 
     return (
         <AppBar className={classes.appBar} position="static" color="inherit">
-            <Toolbar disableGutters>
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                <Menu id="menu-appbar">
-                    <MenuItem component={Link} to="/test">
-                        <Typography textAlign="center">Test</Typography>
-                    </MenuItem>
-                </Menu>
-            </Box>
+            <Toolbar className={classes.toolbar}>
+                <Button component={Link} to="/test" variant="text" color="primary">Test</Button>
             </Toolbar>
         </AppBar>
     );
