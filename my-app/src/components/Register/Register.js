@@ -31,7 +31,7 @@ const Auth = () => {
                 </Box>
                 <center>
                     <div>
-                        <img src={Spongebob} alt="Welcome to the Club Squidward" height="800" />
+                        <img src={Spongebob} alt="Welcome to the Club Squidward" height="600" />
                     </div>
                 </center>
             </div>
