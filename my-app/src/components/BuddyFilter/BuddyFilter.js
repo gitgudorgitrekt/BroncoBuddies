@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Auth = () => {
+const BuddyFilter = () => {
     const state = null;
 
     return (
@@ -10,4 +10,4 @@ const Auth = () => {
     )
 }
 
-export default Auth
+export default BuddyFilter
