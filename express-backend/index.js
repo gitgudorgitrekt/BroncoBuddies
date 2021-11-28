@@ -1,10 +1,11 @@
 import express from 'express';
+import cookieParser from 'cookie-parser'
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
 import bcrypt from 'bcrypt';
-import registration from './routes/registration.js'
+import auth from './routes/auth.js'
 import postRoutes from './routes/posts.js';
 
 dotenv.config();
@@ -13,7 +14,8 @@ const app = express();
 app.use(express.json({ limit: "30mb", extended: true}));
 app.use(express.urlencoded({ limit: "30mb", extended: true}));
 app.use(cors());
-app.use('/api/register', registration);
+app.use(cookieParser('pazzw0rd$'));
+app.use('/auth', auth);
 
 app.use('/posts', postRoutes);
 
