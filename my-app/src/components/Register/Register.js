@@ -6,6 +6,11 @@ import FormControl from '@mui/material/FormControl'
 import Button from '@mui/material/Button'
 import useStyles from './styles'
 const Auth = () => {
+    const doRegister = () => {
+        console.log("sending user to tags page")
+        this.props.history.push('/tags');
+    }
+    
     const state = null;
     const classes = useStyles();
     return (
@@ -29,7 +34,9 @@ const Auth = () => {
                             <TextField id="standard-basic" label="Password" variant="standard" />
                         </FormControl>
                         <FormControl fullWidth sx={{ m: 1 }}>
-                            <Button variant="contained">Register Account</Button>
+                            <Button variant="contained" 
+                                onClick={doRegister}
+                            >Register Account</Button>
                         </FormControl>
                 </Box>
                 <center>
@@ -41,5 +48,6 @@ const Auth = () => {
         </div>
     )
 }
+
 
 export default Auth
