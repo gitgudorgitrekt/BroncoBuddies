@@ -1,14 +1,14 @@
 import React from 'react'
 import Spongebob from '../../images/spongebob-welcome.gif'
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField'
+import Box from '@mui/material/Box'
 import FormControl from '@mui/material/FormControl'
 import Button from '@mui/material/Button'
 import useStyles from './styles'
 const Auth = () => {
     const doRegister = () => {
         console.log("sending user to tags page")
-        this.props.history.push('/tags');
+        window.location.href = '/tags'
     }
     
     const state = null;
