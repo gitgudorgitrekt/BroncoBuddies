@@ -9,7 +9,7 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import BuddyFilter from './components/BuddyFilter/BuddyFilter';
-import Tags from '.components/Tags/Tags'
+import Tags from './components/Tags/Tags'
 
 const App = () => {
     return (
