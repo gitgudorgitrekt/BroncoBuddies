@@ -23,10 +23,13 @@ const Auth = () => {
                             <TextField id="standard-basic" label="Email" variant="standard" />
                         </FormControl>
                         <FormControl fullWidth sx={{ m: 1 }}>
+                            <TextField id="standard-basic" label="Username" variant="standard" />
+                        </FormControl>
+                        <FormControl fullWidth sx={{ m: 1 }}>
                             <TextField id="standard-basic" label="Password" variant="standard" />
                         </FormControl>
                         <FormControl fullWidth sx={{ m: 1 }}>
-                            <Button variant="contained" color="success">Register Account</Button>
+                            <Button variant="contained">Register Account</Button>
                         </FormControl>
                 </Box>
                 <center>
