@@ -6,7 +6,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Bar from './components/Bar/Bar';
 import Home from './components/Home/Home';
-import Auth from './components/Login/Login';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+import BuddyFilter from './components/BuddyFilter/BuddyFilter';
 
 const App = () => {
     return (
@@ -16,7 +18,9 @@ const App = () => {
                 <Bar />
                 <Routes>
                     <Route path="/" exact element={<Home />}/>
-                    <Route path="/auth" exact element={<Auth />}/>
+                    <Route path="/buddyfilter" exact element={<BuddyFilter />}/>
+                    <Route path="/login" exact element={<Login />}/>
+                    <Route path="/register" exact element={<Register />}/>
                 </Routes>
             </Container>
         </BrowserRouter>
