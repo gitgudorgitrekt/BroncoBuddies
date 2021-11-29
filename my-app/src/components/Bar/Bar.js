@@ -9,7 +9,7 @@ const Bar = () => {
 
     return (
         <AppBar className={classes.appBar} position="static" color="inherit">
-            <Toolbar className={classes.toolbar}>
+            <Toolbar className={classes.toolbar} justifyContent="space-between" alignItems="center">
                 <Button component={Link} to="/buddyfilter" variant="contained" color="primary">Buddy Filter</Button>
                 <Button component={Link} to="/register" variant="contained" color="primary">Register</Button>
                 <Button component={Link} to="/about" variant="contained" color="primary">About Us</Button>
