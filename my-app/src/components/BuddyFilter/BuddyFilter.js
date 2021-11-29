@@ -12,8 +12,8 @@ const BuddyFilter = () => {
         color: theme.palette.text.secondary,
       }));
     return (
-        <Grid container spacing={2}>
-            <Grid item xs={3}>
+        <Grid container spacing={0.5}>
+            <Grid item xs={3} >
                 <Item>Filter</Item>
             </Grid>
             <Grid item xs={9}>
