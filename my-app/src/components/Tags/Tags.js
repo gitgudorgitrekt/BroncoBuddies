@@ -69,8 +69,8 @@ const Tags = () => {
           console.log(response)
           const Jason = await response.json();
 
-          if(Jason.status == 'ok'){
-            window.location.href = '/home'
+          if(Jason.success == true){
+            window.location.href = '/'
           }
           else{
               window.alert("Issue with adding information to profile!")

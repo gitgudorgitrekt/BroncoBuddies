@@ -9,6 +9,10 @@ export const login = async (req, res) => {
   let result = await bcrypt.compare(password, user.password);
 
   res.cookie('session', user._id, { signed: true, sameSite:'none', secure:true });
-
-  return res.json({ success: result });
+  if(result == true){
+    return res.json({ success: true, firstname:user.firstname, lastname:user.lastname });
+  }
+  else{
+    return res.json({ success: false });
+  }
 }

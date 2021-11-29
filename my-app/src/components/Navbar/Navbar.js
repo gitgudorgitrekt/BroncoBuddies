@@ -1,3 +1,4 @@
+import store from '../../store.js'
 import React from 'react'
 import { AppBar, Button, Toolbar, Typography, Avatar } from '@material-ui/core'
 import { Link } from 'react-router-dom';
@@ -8,7 +9,7 @@ import buddies from '../../images/group-android-chrome-512x512.png'
 const Navbar = () => {
     const classes = useStyles();
     const user = null;
-
+    console.log(store.getState())
     return (
         <AppBar className={classes.appBar} position="static" color="inherit">
             <div className={classes.brandContainer}>
@@ -16,10 +17,10 @@ const Navbar = () => {
                 <img className={classes.image} src={buddies} alt="icon" height="50" />
             </div>
             <Toolbar className={classes.toolbar}>
-                {user ?  (
+                {window.localStorage.getItem('LOGGEDIN')=='true' ?  (
                     <div className={classes.profile}>
-                        <Avatar className={classes.yellow} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
-                        <Typography className={classes.userName} variant="h6">{user.result.name}</Typography>
+                        <Avatar className={classes.yellow}  src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1200px-SpongeBob_SquarePants_character.svg.png">BOB</Avatar>
+                        <Typography className={classes.userName} variant="h6">Pants</Typography>
                         <Button variant="contained" className={classes.logout} color="secondary">Logout</Button>
                     </div>
                 ) : (

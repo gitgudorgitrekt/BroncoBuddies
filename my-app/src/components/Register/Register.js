@@ -1,3 +1,4 @@
+import store from '../../store.js'
 import React from 'react'
 import Spongebob from '../../images/spongebob-welcome.gif'
 import TextField from '@mui/material/TextField'
@@ -37,6 +38,7 @@ const Auth = () => {
           const Jason = await response.json();
 
           if(Jason.status == 'ok'){
+            window.localStorage.setItem('LOGGEDIN', 'true')
             window.location.href = '/tags'
           }
           else{

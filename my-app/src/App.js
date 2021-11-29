@@ -11,7 +11,6 @@ import Register from './components/Register/Register';
 import BuddyFilter from './components/BuddyFilter/BuddyFilter';
 import Tags from './components/Tags/Tags';
 import About from './components/About/About';
-
 const App = () => {
     return (
         <BrowserRouter>

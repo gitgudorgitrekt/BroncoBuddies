@@ -24,10 +24,9 @@ export const register = async (req, res) => {
 		});
 		res.cookie('session', user._id, { signed: true, sameSite:'none', secure:true });
 		console.log('User created:', user);
+		return res.json({ status: 'ok', firstname:user.firstname, lastname:user.lastname });
 	} catch (error) {
 		console.log(error);
 		return res.json({ status: 'database error' });
 	}
-
-	res.json({ status: 'ok' })
 }
