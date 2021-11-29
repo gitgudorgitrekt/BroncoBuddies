@@ -15,14 +15,15 @@ export const register = async (req, res) => {
 	let hashedPassword = await bcrypt.hash(password, 15);
 
 	try {
-		const response = await User.create({
+		const user = await User.create({
 			firstname,
 			lastname,
 			username,
 			email,
 			password: hashedPassword
 		});
-		console.log('User created:', response);
+		res.cookie('session', user._id, { signed: true });
+		console.log('User created:', user);
 	} catch (error) {
 		console.log(error);
 		return res.json({ status: 'database error' });

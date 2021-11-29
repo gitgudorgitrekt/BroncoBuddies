@@ -13,13 +13,12 @@ const Auth = () => {
     const passwordRef = React.createRef();
     const doRegister = async () => {
         console.log("sending user to tags page")
-        //window.location.href = '/tags'
-        const firstName = firstNameRef.current.value
-        const lastName = lastNameRef.current.value
+        const firstname = firstNameRef.current.value
+        const lastname = lastNameRef.current.value
         const email = emailRef.current.value
         const username = usernameRef.current.value
         const password = passwordRef.current.value
-        const data = {firstName, lastName, email, username, password}
+        const data = {firstname, lastname, email, username, password}
         try{
             const response = await window.fetch('https://broncobuddies.herokuapp.com/auth/register', {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -35,7 +34,14 @@ const Auth = () => {
             body: JSON.stringify(data) 
           });
           console.log(response)
-          console.log(await response.json())
+          const Jason = await response.json();
+
+          if(Jason.status == 'ok'){
+            window.location.href = '/tags'
+          }
+          else{
+              window.alert("Account creation failed!")
+          }
         }catch(err){
             console.log(err)
         }
