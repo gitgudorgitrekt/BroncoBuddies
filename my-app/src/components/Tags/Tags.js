@@ -9,7 +9,46 @@ import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button'
 import Checkbox from '@mui/material/Checkbox';
 import useStyles from './styles'
-const Auth = () => {
+const Tags = () => {
+    const genderRef = React.createRef();
+    const transferRef = React.createRef();
+    const yearRef = React.createRef();
+    const tagsRef = React.createRef();
+
+    const doTags = async () => {
+        console.log("sending user to tags page")
+        const gender = genderRef.current.value
+        const transfer = transferRef.current.value
+        const year = yearRef.current.value
+        const tags = tagsRef.current.value
+        const data = {gender, transfer, year, tags}
+        try{
+            const response = await window.fetch('https://broncobuddies.herokuapp.com/auth/register', {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'include', // include, *same-origin, omit
+            headers: {
+              'Content-Type': 'application/json'
+              // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            redirect: 'follow', // manual, *follow, error
+            referrerPolicy: 'no-referrer', 
+            body: JSON.stringify(data) 
+          });
+          console.log(response)
+          const Jason = await response.json();
+
+          if(Jason.status == 'ok'){
+            window.location.href = '/home'
+          }
+          else{
+              window.alert("Issue with adding information to profile!")
+          }
+        }catch(err){
+            console.log(err)
+        }
+    }
     const state = null;
     const classes = useStyles();
     return (
@@ -61,4 +100,4 @@ const Auth = () => {
     )
 }
 
-export default Auth
+export default Tags
