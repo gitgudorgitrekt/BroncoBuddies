@@ -53,7 +53,7 @@ const Tags = () => {
         const data = {gender, transfer, year, tags:tagsArray}
         console.log(data)
         try{
-            const response = await window.fetch('https://broncobuddies.herokuapp.com/auth/register', {
+            const response = await window.fetch('https://broncobuddies.herokuapp.com/tags', {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

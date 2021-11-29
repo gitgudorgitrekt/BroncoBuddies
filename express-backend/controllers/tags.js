@@ -11,6 +11,6 @@ export const tags = async (req, res) => {
   user.year = year;
   user.tags = tags;
   await user.save();
-  return res.json({ success: result });
+  return res.json({ success: true });
 }
  
