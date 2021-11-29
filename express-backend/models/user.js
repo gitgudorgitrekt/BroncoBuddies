@@ -29,6 +29,18 @@ const userSchema = new mongoose.Schema({
 		required: true,
 		max: 32
 	},
+	gender:{
+		type: String
+	},
+	transfer:{
+		type: Boolean
+	},
+	year:{
+		type: Number
+	},
+	interesttags:{
+		type: [String]
+	},
 	password:{
 		type: String,
 		required: true
