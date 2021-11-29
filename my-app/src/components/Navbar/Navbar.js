@@ -7,6 +7,9 @@ import useStyles from './styles'
 import buddies from '../../images/group-android-chrome-512x512.png'
 
 const Navbar = () => {
+    function doLogout(){
+        
+    }
     const classes = useStyles();
     const user = null;
     console.log(store.getState())
