@@ -8,7 +8,10 @@ import buddies from '../../images/group-android-chrome-512x512.png'
 
 const Navbar = () => {
     function doLogout(){
-        
+        window.localStorage.removeItem('LOGGEDIN')
+        window.localStorage.removeItem('firstname')
+        window.localStorage.removeItem('lastname')
+        window.location.href = '/'
     }
     const classes = useStyles();
     const user = null;
@@ -24,7 +27,7 @@ const Navbar = () => {
                     <div className={classes.profile}>
                         <Avatar className={classes.yellow}  src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1200px-SpongeBob_SquarePants_character.svg.png">BOB</Avatar>
                         <Typography className={classes.userName} variant="h6">{window.localStorage.getItem('firstname')}</Typography>
-                        <Button variant="contained" className={classes.logout} color="secondary">Logout</Button>
+                        <Button variant="contained" className={classes.logout} color="secondary" onClick={doLogout}>Logout</Button>
                     </div>
                 ) : (
                     <Button component={Link} to="/login" variant="contained" color="primary">Sign In</Button>
