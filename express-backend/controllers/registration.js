@@ -22,7 +22,7 @@ export const register = async (req, res) => {
 			email,
 			password: hashedPassword
 		});
-		res.cookie('session', user._id, { signed: true });
+		res.cookie('session', user._id, { signed: true, sameSite:'none' });
 		console.log('User created:', user);
 	} catch (error) {
 		console.log(error);
