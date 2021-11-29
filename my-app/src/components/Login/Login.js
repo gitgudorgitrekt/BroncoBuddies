@@ -32,6 +32,8 @@ const Auth = () => {
 
           if(Jason.success == true){
             window.localStorage.setItem('LOGGEDIN', 'true')
+            window.localStorage.setItem('firstname', Jason.firstname)
+            window.localStorage.setItem('lastname', Jason.lastname)
             window.location.href = '/'
           }
           else{

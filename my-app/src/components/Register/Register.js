@@ -39,6 +39,8 @@ const Auth = () => {
 
           if(Jason.status == 'ok'){
             window.localStorage.setItem('LOGGEDIN', 'true')
+            window.localStorage.setItem('firstname', Jason.firstname)
+            window.localStorage.setItem('lastname', Jason.lastname)
             window.location.href = '/tags'
           }
           else{

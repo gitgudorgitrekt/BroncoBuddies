@@ -20,7 +20,7 @@ const Navbar = () => {
                 {window.localStorage.getItem('LOGGEDIN')=='true' ?  (
                     <div className={classes.profile}>
                         <Avatar className={classes.yellow}  src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1200px-SpongeBob_SquarePants_character.svg.png">BOB</Avatar>
-                        <Typography className={classes.userName} variant="h6">Pants</Typography>
+                        <Typography className={classes.userName} variant="h6">{window.localStorage.getItem('firstname')}</Typography>
                         <Button variant="contained" className={classes.logout} color="secondary">Logout</Button>
                     </div>
                 ) : (
