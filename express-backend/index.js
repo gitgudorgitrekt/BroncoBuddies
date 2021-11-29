@@ -7,6 +7,7 @@ import path from 'path';
 import bcrypt from 'bcrypt';
 import auth from './routes/auth.js'
 import postRoutes from './routes/posts.js';
+import tagsRoute from './routes/tags.js';
 
 dotenv.config();
 const app = express();
@@ -18,7 +19,7 @@ app.use(cookieParser('pazzw0rd$'));
 app.use('/auth', auth);
 
 app.use('/posts', postRoutes);
-
+app.use('/tags', tagsRoute);
 const CONNECTION_URL = process.env.REACT_APP_CONNECTION_URL;
 const PORT = process.env.PORT || 5000;
 

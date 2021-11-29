@@ -38,7 +38,7 @@ const userSchema = new mongoose.Schema({
 	year:{
 		type: Number
 	},
-	interesttags:{
+	tags:{
 		type: [String]
 	},
 	password:{

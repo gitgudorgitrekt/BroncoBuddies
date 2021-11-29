@@ -16,12 +16,42 @@ const Tags = () => {
     const tagsRef = React.createRef();
 
     const doTags = async () => {
-        console.log("sending user to tags page")
-        const gender = genderRef.current.value
-        const transfer = transferRef.current.value
-        const year = yearRef.current.value
-        const tags = tagsRef.current.value
-        const data = {gender, transfer, year, tags}
+        console.log("sending user to home page")
+        const gender = genderRef.current.querySelector('input[name=gender]:checked').value
+        let transfer = transferRef.current.querySelector('input[name=transfer]:checked').value
+        if(transfer == "yes"){
+            transfer = true;
+        }
+        else{
+            transfer = false;
+        }
+        let year = yearRef.current.querySelector('input[name=year]:checked').value
+        if(year == "freshman"){
+            year = 0;
+        }
+        if(year == "sophomore"){
+            year = 1;
+        }
+        if(year == "junior"){
+            year = 2;
+        }
+        else{
+            year = 3;
+        }
+        const tagsInputs = tagsRef.current.querySelectorAll('input')
+        const tagsArray = []
+        for(let i = 0; i < tagsInputs.length; i++){
+            let input = tagsInputs[i]
+            let value = input.checked
+            let label = input.parentNode.parentNode.innerText
+            if(value == true){
+                tagsArray.push(label)
+            }
+        }
+        console.log(tagsArray)
+        //const tags = tagsRef.current.value
+        const data = {gender, transfer, year, tags:tagsArray}
+        console.log(data)
         try{
             const response = await window.fetch('https://broncobuddies.herokuapp.com/auth/register', {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -58,31 +88,31 @@ const Tags = () => {
                 <Box sx={{ background: 'white' }} className={classes.LoginBox}>
                     <FormControl component="fieldset">
                         <FormLabel component="legend">Gender</FormLabel>
-                            <RadioGroup aria-label="gender" name="radio-buttons-group">
-                                <FormControlLabel value="female" control={<Radio />} label="Female" />
-                                <FormControlLabel value="male" control={<Radio />} label="Male" />
-                                <FormControlLabel value="other" control={<Radio />} label="Other" />
+                            <RadioGroup aria-label="gender" name="radio-buttons-group" ref={genderRef}>
+                                <FormControlLabel value="female" control={<Radio name="gender" />} label="Female" />
+                                <FormControlLabel value="male" control={<Radio name="gender"/>} label="Male" />
+                                <FormControlLabel value="other" control={<Radio name="gender"/>} label="Other" />
                             </RadioGroup>
                     </FormControl>
                     <FormControl component="fieldset">
                         <FormLabel component="legend">Are You A Transfer?</FormLabel>
-                            <RadioGroup aria-label="transfer" name="radio-buttons-group">
-                                <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-                                <FormControlLabel value="no" control={<Radio />} label="no" />
+                            <RadioGroup aria-label="transfer" name="radio-buttons-group"  ref={transferRef}>
+                                <FormControlLabel value="yes" control={<Radio name="transfer"/>} label="Yes" />
+                                <FormControlLabel value="no" control={<Radio name="transfer"/>} label="No" />
                             </RadioGroup>
                     </FormControl>
                     <FormControl component="fieldset">
                         <FormLabel component="legend">Year</FormLabel>
-                            <RadioGroup aria-label="Year" name="radio-buttons-group">
-                                <FormControlLabel value="freshman" control={<Radio />} label="Freshman" />
-                                <FormControlLabel value="sophomore" control={<Radio />} label="Sophomore" />
-                                <FormControlLabel value="junior" control={<Radio />} label="Junior" />
-                                <FormControlLabel value="senior" control={<Radio />} label="Senior" />
+                            <RadioGroup aria-label="year" name="radio-buttons-group" ref={yearRef}>
+                                <FormControlLabel value="freshman" control={<Radio name="year"/>} label="Freshman" />
+                                <FormControlLabel value="sophomore" control={<Radio name="year"/>} label="Sophomore" />
+                                <FormControlLabel value="junior" control={<Radio name="year"/>} label="Junior" />
+                                <FormControlLabel value="senior" control={<Radio name="year"/>} label="Senior" />
                             </RadioGroup>
                     </FormControl>
                     <FormControl>
-                        <FormGroup>
-                            <FormLabel component="legend">Interest tags</FormLabel>
+                        <FormGroup ref={tagsRef}>
+                            <FormLabel component="legend">Interest tags</FormLabel >
                                 <FormControlLabel control={<Checkbox />} label="Partying" />
                                 <FormControlLabel control={<Checkbox />} label="Studying" />
                                 <FormControlLabel control={<Checkbox />} label="Gaming" />
@@ -92,7 +122,7 @@ const Tags = () => {
                         </FormGroup>
                     </FormControl>
                     <FormControl fullWidth sx={{ m: 1 }}>
-                            <Button variant="contained">Complete Profile</Button>
+                            <Button variant="contained"  onClick={doTags} >Complete Profile</Button>
                     </FormControl>
                 </Box>
             </div>
