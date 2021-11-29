@@ -6,9 +6,39 @@ import FormControl from '@mui/material/FormControl'
 import Button from '@mui/material/Button'
 import useStyles from './styles'
 const Auth = () => {
-    const doRegister = () => {
+    const firstNameRef = React.createRef();
+    const lastNameRef = React.createRef();
+    const emailRef = React.createRef();
+    const usernameRef = React.createRef();
+    const passwordRef = React.createRef();
+    const doRegister = async () => {
         console.log("sending user to tags page")
-        window.location.href = '/tags'
+        //window.location.href = '/tags'
+        const firstName = firstNameRef.current.value
+        const lastName = lastNameRef.current.value
+        const email = emailRef.current.value
+        const username = usernameRef.current.value
+        const password = passwordRef.current.value
+        const data = {firstName, lastName, email, username, password}
+        try{
+            const response = await window.fetch('https://broncobuddies.herokuapp.com/auth/register', {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'include', // include, *same-origin, omit
+            headers: {
+              'Content-Type': 'application/json'
+              // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            redirect: 'follow', // manual, *follow, error
+            referrerPolicy: 'no-referrer', 
+            body: JSON.stringify(data) 
+          });
+          console.log(response)
+          console.log(await response.json())
+        }catch(err){
+            console.log(err)
+        }
     }
     
     const state = null;
@@ -19,19 +49,19 @@ const Auth = () => {
             <div>
                 <Box sx={{ background: 'white' }} className={classes.LoginBox}>
                         <FormControl fullWidth sx={{ m: 1 }}>
-                            <TextField id="standard-basic" label="First name" variant="standard" />
+                            <TextField id="standard-basic" label="First name" variant="standard" inputRef={firstNameRef}/>
                         </FormControl>
                         <FormControl fullWidth sx={{ m: 1 }}>
-                            <TextField id="standard-basic" label="Last name" variant="standard" />
+                            <TextField id="standard-basic" label="Last name" variant="standard" inputRef={lastNameRef}/>
                         </FormControl>
                         <FormControl fullWidth sx={{ m: 1 }}>
-                            <TextField id="standard-basic" label="Email" variant="standard" />
+                            <TextField id="standard-basic" label="Email" variant="standard" inputRef={emailRef}/>
                         </FormControl>
                         <FormControl fullWidth sx={{ m: 1 }}>
-                            <TextField id="standard-basic" label="Username" variant="standard" />
+                            <TextField id="standard-basic" label="Username" variant="standard" inputRef={usernameRef}/>
                         </FormControl>
                         <FormControl fullWidth sx={{ m: 1 }}>
-                            <TextField id="standard-basic" label="Password" variant="standard" />
+                            <TextField id="standard-basic" label="Password" variant="standard" inputRef={passwordRef}/>
                         </FormControl>
                         <FormControl fullWidth sx={{ m: 1 }}>
                             <Button variant="contained" 
