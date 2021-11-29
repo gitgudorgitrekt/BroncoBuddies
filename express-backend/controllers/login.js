@@ -8,7 +8,7 @@ export const login = async (req, res) => {
   let user = await User.findOne({username});
   let result = await bcrypt.compare(password, user.password);
 
-  res.cookie('session', user._id, { signed: true });
+  res.cookie('session', user._id, { signed: true, sameSite:'none' });
 
   return res.json({ success: result });
 }
