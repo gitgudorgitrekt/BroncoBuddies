@@ -1,32 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { Container, AppBar, Typography, Grow, Grid, ExpansionPanelActions} from '@material-ui/core';
-import {useDispatch} from 'react-redux';
-import {getPosts} from '../../actions/posts';
+import React, { useState, useEffect} from 'react';
+import { useDispatch } from 'react-redux';
+import { getPosts } from '../../actions/posts';
+import { Container, Grow, Grid } from '@material-ui/core';
 import Posts from '../Posts/Posts';
 import Form from '../Form/Form';
 
 const Home = () => {
-    const classes = useStyles();
+    const [currentId, setCurrentId] = useState(null);
+    
     const dispatch = useDispatch();
 
     useEffect(()=>{
         dispatch(getPosts());
-    }, [dispatch]);
+    }, [currentId, dispatch]);
 
     return (
         <Grow in>
             <Container>
-                <Grid container justify="space between" alignItems="strech" spacing={3}>
+                <Grid container alignItems="stretch" spacing={2} justify="space-between">
                     <Grid item xs={12} sm={7}>
-                        <Posts />
+                        <Posts setCurrentId={setCurrentId} />
                     </Grid>
-                    <Grid item xs={12} sm={7}>
-                        <Form />
+                    <Grid item xs={12} sm={4}>
+                        <Form currentId={currentId} setCurrentId={setCurrentId} />
                     </Grid>
                 </Grid>
             </Container>
         </Grow>
-    )
-}
+    );
+};
 
-export default Home;
+export default Home

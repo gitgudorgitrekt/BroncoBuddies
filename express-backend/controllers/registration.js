@@ -2,32 +2,31 @@ import User from '../models/user.js';
 import bcrypt from 'bcrypt';
 
 export const register = async (req, res) => {
-	console.log(req.body);
-
-	const { username, password: plainTextPassword } = req.body;
+	const { firstname, lastname, username, password, email } = req.body;
 
 	if (!username || typeof username != 'string') {
 		return res.json({ status: 'not acceptable'})
 	}
 
-	if (!plainTextPassword || typeof plainTextPassword != 'string') {
+	if (!password || typeof password != 'string') {
 		return res.json({ status: 'not acceptable'})
 	}
 
-	console.log(await bcrypt.hash(plainTextPassword, 15));
+	let hashedPassword = await bcrypt.hash(password, 15);
 
-	try{
-		const response = await User.create({
+	try {
+		const user = await User.create({
+			firstname,
+			lastname,
 			username,
-			password
-		})
-		console.log('User created:', response);
-	} catch(error) {
-		if (error.code == 11000) {
-			return res.json({ status: 'not acceptable'})
-		}
-		throw error;
+			email,
+			password: hashedPassword
+		});
+		res.cookie('session', user._id, { signed: true, sameSite:'none', secure:true });
+		console.log('User created:', user);
+		return res.json({ status: 'ok', firstname:user.firstname, lastname:user.lastname });
+	} catch (error) {
+		console.log(error);
+		return res.json({ status: 'database error' });
 	}
-
-	res.json({ status: 'ok' })
 }

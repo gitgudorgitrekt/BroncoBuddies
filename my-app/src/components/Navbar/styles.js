@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { deepPurple } from '@material-ui/core/colors';
+import { yellow } from '@material-ui/core/colors';
 
 export default makeStyles((theme) => ({
   appBar: {
@@ -12,7 +12,7 @@ export default makeStyles((theme) => ({
     padding: '10px 50px',
   },
   heading: {
-    color: 'rgba(30,130,76, 1)',
+    color: 'rgba(0,183,255, 1)',
     textDecoration: 'none',
   },
   image: {
@@ -36,8 +36,8 @@ export default makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
   },
-  purple: {
-    color: theme.palette.getContrastText(deepYellow[500]),
-    backgroundColor: deepYellow[500],
+  yellow: {
+    color: theme.palette.getContrastText(yellow[500]),
+    backgroundColor: yellow[500],
   },
 }));

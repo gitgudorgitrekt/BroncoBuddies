@@ -1,35 +1,40 @@
-import { mergeClasses } from '@material-ui/styles';
+import store from '../../store.js'
 import React from 'react'
-import { AppBar, Avatar, Button, Toolbar, Typography } from '@material-ui/core';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { AppBar, Button, Toolbar, Typography, Avatar } from '@material-ui/core'
 import { Link } from 'react-router-dom';
 
-import useStyles from './styles';
-import broncos from '../../images/android-chrome-192x192.png'
+import useStyles from './styles'
+import buddies from '../../images/group-android-chrome-512x512.png'
 
 const Navbar = () => {
-const classes = useStyles();
-const user = null;
-
+    function doLogout(){
+        window.localStorage.removeItem('LOGGEDIN')
+        window.localStorage.removeItem('firstname')
+        window.localStorage.removeItem('lastname')
+        window.location.href = '/'
+    }
+    const classes = useStyles();
+    const user = null;
+    console.log(store.getState())
     return (
-            <AppBar className={classes.appBar} position="static" color="inherit">
-                <div className={classes.brandContainer}>
-                    <Typography component={Link} to="/" className={classes.heading} variant="h2" align="center">BroncoBuddies</Typography>
-                    <img className={classes.image} src={broncos} alt="icon" height="60"></img>
-                </div>
-                <Toolbar className={classes.toolbar}>
-                    {user ? (
-                        <div className={classes.profile}>
-                            <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
-                            <Typography className={classes.userName} variant="h6">{user.result.name}</Typography>
-                            <Button variant="contained" className={classes.logout} color="secondary">Logout</Button>
-                        </div>
-                    ) : (
-                        <Button component={Link} to="/auth" variant="contained" color="primary">Sign in</Button>
-                    )}
-                </Toolbar>
-            </AppBar>
-    )
-}
+        <AppBar className={classes.appBar} position="static" color="inherit">
+            <div className={classes.brandContainer}>
+                <Typography component={Link} to="/" className={classes.heading} variant="h2" align="center">Bronco Buddies</Typography>
+                <img className={classes.image} src={buddies} alt="icon" height="50" />
+            </div>
+            <Toolbar className={classes.toolbar}>
+                {window.localStorage.getItem('LOGGEDIN')=='true' ?  (
+                    <div className={classes.profile}>
+                        <Avatar className={classes.yellow}  src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1200px-SpongeBob_SquarePants_character.svg.png">BOB</Avatar>
+                        <Typography className={classes.userName} variant="h6">{window.localStorage.getItem('firstname')}</Typography>
+                        <Button variant="contained" className={classes.logout} color="secondary" onClick={doLogout}>Logout</Button>
+                    </div>
+                ) : (
+                    <Button component={Link} to="/login" variant="contained" color="primary">Sign In</Button>
+                )}
+            </Toolbar>
+        </AppBar>
+    );
+};
 
-export default Navbar;
+export default Navbar
