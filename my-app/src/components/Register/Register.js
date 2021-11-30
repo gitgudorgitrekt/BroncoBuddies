@@ -37,7 +37,7 @@ const Auth = () => {
           console.log(response)
           const Jason = await response.json();
 
-          if(Jason.status == 'ok'){
+          if(Jason.status === 'ok'){
             window.localStorage.setItem('LOGGEDIN', 'true')
             window.localStorage.setItem('firstname', Jason.firstname)
             window.localStorage.setItem('lastname', Jason.lastname)

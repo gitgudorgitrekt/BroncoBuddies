@@ -1,10 +1,9 @@
-import store from '../../store.js'
 import React from 'react'
 import Dutchman from '../../images/dutchman.gif'
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import FormControl from '@mui/material/FormControl'
-import Button from '@mui/material/Button'
+import TextField from '@material-ui/core/TextField';
+import Box from '@material-ui/core/Box';
+import FormControl from '@material-ui/core/FormControl'
+import Button from '@material-ui/core/Button'
 import useStyles from './styles'
 const Auth = () => {
     const usernameRef = React.createRef();
@@ -30,7 +29,7 @@ const Auth = () => {
           console.log(response)
           const Jason = await response.json();
 
-          if(Jason.success == true){
+          if(Jason.success === true){
             window.localStorage.setItem('LOGGEDIN', 'true')
             window.localStorage.setItem('firstname', Jason.firstname)
             window.localStorage.setItem('lastname', Jason.lastname)

@@ -19,20 +19,20 @@ const Tags = () => {
         console.log("sending user to home page")
         const gender = genderRef.current.querySelector('input[name=gender]:checked').value
         let transfer = transferRef.current.querySelector('input[name=transfer]:checked').value
-        if(transfer == "yes"){
+        if(transfer === "yes"){
             transfer = true;
         }
         else{
             transfer = false;
         }
         let year = yearRef.current.querySelector('input[name=year]:checked').value
-        if(year == "freshman"){
+        if(year === "freshman"){
             year = 0;
         }
-        if(year == "sophomore"){
+        if(year === "sophomore"){
             year = 1;
         }
-        if(year == "junior"){
+        if(year === "junior"){
             year = 2;
         }
         else{
@@ -44,7 +44,7 @@ const Tags = () => {
             let input = tagsInputs[i]
             let value = input.checked
             let label = input.parentNode.parentNode.innerText
-            if(value == true){
+            if(value === true){
                 tagsArray.push(label)
             }
         }
@@ -69,7 +69,7 @@ const Tags = () => {
           console.log(response)
           const Jason = await response.json();
 
-          if(Jason.success == true){
+          if(Jason.success === true){
             window.location.href = '/'
           }
           else{

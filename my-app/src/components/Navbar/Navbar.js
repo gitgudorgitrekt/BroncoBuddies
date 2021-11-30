@@ -23,7 +23,7 @@ const Navbar = () => {
                 <img className={classes.image} src={buddies} alt="icon" height="50" />
             </div>
             <Toolbar className={classes.toolbar}>
-                {window.localStorage.getItem('LOGGEDIN')=='true' ?  (
+                {window.localStorage.getItem('LOGGEDIN') === 'true' ?  (
                     <div className={classes.profile}>
                         <Avatar className={classes.yellow}  src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1200px-SpongeBob_SquarePants_character.svg.png">BOB</Avatar>
                         <Typography className={classes.userName} variant="h6">{window.localStorage.getItem('firstname')}</Typography>

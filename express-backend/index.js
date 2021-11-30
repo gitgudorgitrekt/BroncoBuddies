@@ -15,10 +15,11 @@ app.use(express.json({ limit: "30mb", extended: true}));
 app.use(express.urlencoded({ limit: "30mb", extended: true}));
 app.use(cors({origin:'https://broncobuddiescpp.netlify.app'}));
 app.use(cookieParser('pazzw0rd$'));
-app.use('/auth', auth);
 
+app.use('/auth', auth);
 app.use('/posts', postRoutes);
 app.use('/tags', tagsRoute);
+
 const CONNECTION_URL = process.env.REACT_APP_CONNECTION_URL;
 const PORT = process.env.PORT || 5000;
 
