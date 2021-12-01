@@ -17,8 +17,10 @@ const Auth = () => {
         const lastname = lastNameRef.current.value
         const discord = discordRef.current.value
         const aboutMe = aboutMeRef.current.value
+
         try{
-            const response = await window.fetch('https://broncobuddies.herokuapp.com/auth/register', {
+            const data = {firstname, lastname, discord, aboutMe}
+            const response = await window.fetch('https://broncobuddies.herokuapp.com/user/profile', {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -35,13 +37,10 @@ const Auth = () => {
           const Jason = await response.json();
 
           if(Jason.status == 'ok'){
-            window.localStorage.setItem('LOGGEDIN', 'true')
-            window.localStorage.setItem('firstname', Jason.firstname)
-            window.localStorage.setItem('lastname', Jason.lastname)
-            window.location.href = '/tags'
+            window.alert("Profile update saved! :)")
           }
           else{
-              window.alert("Account creation failed!")
+              window.alert("Profile update failed!")
           }
         }catch(err){
             console.log(err)
