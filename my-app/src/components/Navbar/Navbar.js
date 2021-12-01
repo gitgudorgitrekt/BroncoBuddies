@@ -14,7 +14,6 @@ const Navbar = () => {
         window.location.href = '/'
     }
     const classes = useStyles();
-    const user = null;
     console.log(store.getState())
     return (
         <AppBar className={classes.appBar} position="static" color="inherit">

@@ -12,8 +12,14 @@ const Auth = () => {
         const username = usernameRef.current.value
         const password = passwordRef.current.value
         const data = {username, password}
+
+        // Local instance API url
+        const localURL = 'http://localhost:5000/auth/login';
+
+        const herokuURL = 'https://broncobuddies.herokuapp.com/auth/login';
+
         try{
-            const response = await window.fetch('https://broncobuddies.herokuapp.com/auth/login', {
+            const response = await window.fetch(localURL, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -42,7 +48,7 @@ const Auth = () => {
             console.log(err)
         }
     }
-    const state = null;
+
     const classes = useStyles();
     return (
         <div>
@@ -71,4 +77,4 @@ const Auth = () => {
     )
 }
 
-export default Auth
+export default Auth;

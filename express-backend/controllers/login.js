@@ -1,5 +1,4 @@
 import bcrypt from 'bcrypt';
-import mongoose from 'mongoose';
 import User from '../models/user.js';
 
 export const login = async (req, res) => {

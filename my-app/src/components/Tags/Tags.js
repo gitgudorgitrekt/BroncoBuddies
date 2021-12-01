@@ -8,7 +8,9 @@ import FormGroup from '@mui/material/FormGroup';
 import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button'
 import Checkbox from '@mui/material/Checkbox';
+import Grid from '@mui/material/Grid';
 import useStyles from './styles'
+
 const Tags = () => {
     const genderRef = React.createRef();
     const transferRef = React.createRef();
@@ -52,8 +54,14 @@ const Tags = () => {
         //const tags = tagsRef.current.value
         const data = {gender, transfer, year, tags:tagsArray}
         console.log(data)
+
+        // Local instance API url
+        const localURL = 'http://localhost:5000/tags';
+
+        const herokuURL = 'https://broncobuddies.herokuapp.com/tags';
+
         try{
-            const response = await window.fetch('https://broncobuddies.herokuapp.com/tags', {
+            const response = await window.fetch(localURL, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -65,7 +73,7 @@ const Tags = () => {
             redirect: 'follow', // manual, *follow, error
             referrerPolicy: 'no-referrer', 
             body: JSON.stringify(data) 
-          });
+          })
           console.log(response)
           const Jason = await response.json();
 
@@ -79,12 +87,10 @@ const Tags = () => {
             console.log(err)
         }
     }
-    const state = null;
+
     const classes = useStyles();
     return (
-        <div>
-            <h1>Create An Account Here</h1>
-            <div>
+            <Grid>
                 <Box sx={{ background: 'white' }} className={classes.LoginBox}>
                     <FormControl component="fieldset">
                         <FormLabel component="legend">Gender</FormLabel>
@@ -125,9 +131,8 @@ const Tags = () => {
                             <Button variant="contained"  onClick={doTags} >Complete Profile</Button>
                     </FormControl>
                 </Box>
-            </div>
-        </div>
-    )
+            </Grid>
+        )
 }
 
 export default Tags

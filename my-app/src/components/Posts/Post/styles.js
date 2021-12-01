@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 export default makeStyles({
   media: {
     height: 0,
-    paddingTop: '56.25%',
+    paddingTop: '60%',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     backgroundBlendMode: 'darken',
   },
@@ -23,14 +23,17 @@ export default makeStyles({
   },
   overlay: {
     position: 'absolute',
+    display: 'flex',
+    flexDirection: 'column',
     top: '20px',
-    left: '20px',
+    left: '10px',
     color: 'white',
   },
   overlay2: {
     position: 'absolute',
+    display: 'flex',
     top: '20px',
-    right: '20px',
+    right: '0px',
     color: 'white',
   },
   grid: {
@@ -38,7 +41,7 @@ export default makeStyles({
   },
   details: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifycontent: 'space-between',
     margin: '20px',
   },
   title: {
@@ -47,6 +50,10 @@ export default makeStyles({
   cardActions: {
     padding: '0 16px 8px 16px',
     display: 'flex',
-    justifyContent: 'space-between',
+    justifycontent: 'space-between',
+  },
+  cardAction: {
+    display: 'block',
+    textAlign: 'initial',
   },
 });

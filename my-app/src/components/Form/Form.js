@@ -11,7 +11,7 @@ const Form =  ({ currentId, setCurrentId }) => {
     const [postData, setPostData] = useState({
         creator: '', title: '', message: '',tags: '', selectedFile:''
     });
-    const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
+    const post = useSelector((state) => (currentId ? state.posts.posts.find((p) => p._id === currentId) : null));
     const classes = useStyles();
     const dispatch = useDispatch();
 
@@ -20,8 +20,8 @@ const Form =  ({ currentId, setCurrentId }) => {
     }, [post]);
 
     const clear = () => {
-        setCurrentId(null)
-        setPostData({ creator: '', title: '', message: '',tags: '', selectedFile:'' })
+        setCurrentId(0);
+        setPostData({ creator: '', title: '', message: '',tags: '', selectedFile:'' });
     }
 
     const handleSubmit = (e) => {
@@ -29,21 +29,23 @@ const Form =  ({ currentId, setCurrentId }) => {
 
         if(currentId) {
             dispatch(updatePost(currentId, postData));
+            clear();
         }
         else {
             dispatch(createPost(postData));
+            clear();
         }
-        clear();
+        window.location.reload(false);
     }
 
     return(
-        <Paper className={classes.paper}>
+        <Paper className={classes.paper} elevation={6} >
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`}
             onSubmit={handleSubmit}>
                 <Typography variant="h6">{ currentId ? 'Editing' : 'Creating' } a HangOut</Typography>
                 <TextField 
-                    name="creator" 
-                    variant="outlined" 
+                    name="creator"
+                    variant="outlined"
                     label="Creator"
                     fullWidth
                     value={postData.creator}
@@ -74,8 +76,7 @@ const Form =  ({ currentId, setCurrentId }) => {
                         type="file"
                         multiple={false}
                         onDone={({base64})=>setPostData({...postData, selectedFile: base64})}
-                    />
-                     </div>
+                    /></div>
                 <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>
                     Submit
                 </Button>

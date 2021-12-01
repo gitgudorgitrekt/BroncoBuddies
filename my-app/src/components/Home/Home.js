@@ -1,28 +1,37 @@
-import React, { useState, useEffect} from 'react';
-import { useDispatch } from 'react-redux';
-import { getPosts } from '../../actions/posts';
-import { Container, Grow, Grid } from '@material-ui/core';
+import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { Container, Grow, Grid, Paper } from '@material-ui/core';
+
+import Pagination from '../Pagination';
 import Posts from '../Posts/Posts';
 import Form from '../Form/Form';
+import useStyles from './styles';
+
+function useQuery() {
+    return new URLSearchParams(useLocation().search);
+}
 
 const Home = () => {
-    const [currentId, setCurrentId] = useState(null);
-    
-    const dispatch = useDispatch();
+    const classes = useStyles();
+    const [currentId, setCurrentId] = useState(0);
 
-    useEffect(()=>{
-        dispatch(getPosts());
-    }, [currentId, dispatch]);
+    const caller = '/posts';
+
+    const query = useQuery();
+    const page = query.get('page') || 1;
 
     return (
         <Grow in>
-            <Container>
-                <Grid container alignItems="stretch" spacing={2} justifyContent="space-between">
-                    <Grid item xs={12} sm={7}>
+            <Container maxWidth="xl">
+                <Grid container justifyContent="space-between" alignItems="stretch" spacing={3} className={classes.gridContainer}>
+                    <Grid item xs={12} sm={6} md={9}>
                         <Posts setCurrentId={setCurrentId} />
                     </Grid>
-                    <Grid item xs={12} sm={4}>
+                    <Grid item xs={12} sm={6} md={3}>
                         <Form currentId={currentId} setCurrentId={setCurrentId} />
+                        <Paper elevation={6} className={classes.pagination} >
+                            <Pagination caller={caller} page={page}/>
+                        </Paper>
                     </Grid>
                 </Grid>
             </Container>

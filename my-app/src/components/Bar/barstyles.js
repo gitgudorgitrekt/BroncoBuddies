@@ -6,7 +6,7 @@ export default makeStyles((theme) => ({
     margin: '30px 0',
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifycontent: 'space-between',
     alignItems: 'center',
   },
   heading: {
@@ -21,4 +21,7 @@ export default makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
   },
+  buttons: {
+    margin: '5px',
+}
 }));

@@ -1,13 +1,20 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { yellow } from '@material-ui/core/colors';
 
 export default makeStyles((theme) => ({
-  heading: {
-    color: 'rgba(0,183,255, 1)',
-    textDecoration: 'none',
-  },
-  brandContainer: {
+  appBarSearch: {
+    borderRadius: 4,
+    marginBottom: '1rem',
     display: 'flex',
-    alignItems: 'center',
+    padding: '16px',
+  },
+  gridContainer: {
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column-reverse',
+    },
+  },
+  pagination: {
+    borderRadius: 4,
+    marginTop: '1rem',
+    padding: '16px',
   },
 }));

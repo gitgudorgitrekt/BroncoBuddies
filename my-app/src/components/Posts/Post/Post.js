@@ -13,19 +13,26 @@ const Post =  ({ post, setCurrentId }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
     return(
-        <Card className={classes.card}>
+        <Card className={classes.card} raised elevation={6}>
             <CardMedia className={classes.media} image={post.selectedFile} title={post.title}/>
             <div className={classes.overlay}>
                 <Typography variant="h6">{post.creator}</Typography>
                 <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
             </div>
-            <div className={classes.overlay2}>
-                <Button style={{color:'white'}} size="small" onClick={() => setCurrentId(post._id)}>
-                    <MoreHorizIcon fontSize="medium"/>
+            <div className={classes.overlay2} name="edit">
+                <Button
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setCurrentId(post._id);
+                    }}
+                    style={{ color: 'white' }}
+                    size="small"
+                >
+                    <MoreHorizIcon justifycontent="right" fontSize="medium" />
                 </Button>
             </div>
             <div className={classes.details}> 
-                <Typography variant="body2" color="textSecondary">{post.tags.map((tag) => `#${tag}`)}</Typography>
+                <Typography variant="body2" color="textSecondary">{post.tags.map((tag) => `#${tag.trim()} `)}</Typography>
             </div>
             <Typography className={classes.title} variant="h5" gutterBottom>{post.title}</Typography>
             <CardContent>
@@ -44,5 +51,6 @@ const Post =  ({ post, setCurrentId }) => {
             </CardActions>
         </Card>
     );
-}
+};
+
 export default Post;
