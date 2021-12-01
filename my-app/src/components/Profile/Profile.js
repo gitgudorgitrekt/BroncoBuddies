@@ -35,6 +35,8 @@ const Auth = () => {
           const Jason = await response.json();
 
           if(Jason.success == true){
+            window.localStorage.setItem('firstname', firstname)
+            window.localStorage.setItem('lastname', lastname)
             window.alert("Profile update saved! :)")
           }
           else{
