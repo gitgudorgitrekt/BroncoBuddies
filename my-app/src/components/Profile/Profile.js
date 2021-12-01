@@ -34,7 +34,7 @@ const Auth = () => {
           console.log(response)
           const Jason = await response.json();
 
-          if(Jason.status == 'ok'){
+          if(Jason.success == true){
             window.alert("Profile update saved! :)")
           }
           else{
