@@ -45,6 +45,14 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
+	discord:{
+		type: String,
+		max: 37
+	},
+	aboutme:{
+		type: String,
+		max: 420
+	}
 }, {collection: 'users'})
 
 const User = mongoose.model('User', userSchema);

@@ -11,6 +11,7 @@ import Register from './components/Register/Register';
 import BuddyFilter from './components/BuddyFilter/BuddyFilter';
 import Tags from './components/Tags/Tags';
 import About from './components/About/About';
+import Profile from './components/Profile/Profile';
 const App = () => {
     return (
         <BrowserRouter>
@@ -24,6 +25,7 @@ const App = () => {
                     <Route path="/register" exact element={<Register />}/>
                     <Route path="/tags" exact element={<Tags />}/>
                     <Route path="/about" exact element={<About />}/>
+                    <Route path="/profile" exact element={<Profile />}/>
                 </Routes>
             </Container>
         </BrowserRouter>

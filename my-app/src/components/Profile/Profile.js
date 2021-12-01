@@ -7,15 +7,71 @@ import FormControl from '@mui/material/FormControl'
 import Button from '@mui/material/Button'
 import useStyles from './styles'
 const Auth = () => {
-    
+    const firstNameRef = React.createRef();
+    const lastNameRef = React.createRef();
+    const discordRef = React.createRef();
+    const aboutMeRef = React.createRef();
+    const doSave = async () => {
+        console.log("Saving profile")
+        const firstname = firstNameRef.current.value
+        const lastname = lastNameRef.current.value
+        const discord = discordRef.current.value
+        const aboutMe = aboutMeRef.current.value
+        try{
+            const response = await window.fetch('https://broncobuddies.herokuapp.com/auth/register', {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'include', // include, *same-origin, omit
+            headers: {
+              'Content-Type': 'application/json'
+              // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            redirect: 'follow', // manual, *follow, error
+            referrerPolicy: 'no-referrer', 
+            body: JSON.stringify(data) 
+          });
+          console.log(response)
+          const Jason = await response.json();
+
+          if(Jason.status == 'ok'){
+            window.localStorage.setItem('LOGGEDIN', 'true')
+            window.localStorage.setItem('firstname', Jason.firstname)
+            window.localStorage.setItem('lastname', Jason.lastname)
+            window.location.href = '/tags'
+          }
+          else{
+              window.alert("Account creation failed!")
+          }
+        }catch(err){
+            console.log(err)
+        }
+    }
     const state = null;
     const classes = useStyles();
     return (
         <div>
-            <h1>Your Profile</h1>
+            <h1 >Your Profile</h1>
             <div>
-                <Box sx={{ width: 300, height: 300, background: 'white' }} className={classes.ProfileBox}>
-                        
+                <Box sx={{ width: 1000, height: 800, background: 'white' }} className={classes.ProfileBox}>
+                        <FormControl fullWidth sx={{ m: 1 }}>
+                            <Avatar className={classes.yellow}  src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1200px-SpongeBob_SquarePants_character.svg.png"/>
+                        </FormControl>
+                        <FormControl fullWidth sx={{ m: 1 }}>
+                            <TextField id="standard-basic" label="First name" variant="standard" inputRef={firstNameRef}/>
+                        </FormControl>
+                        <FormControl fullWidth sx={{ m: 1 }}>
+                            <TextField id="standard-basic" label="Last name" variant="standard" inputRef={lastNameRef}/>
+                        </FormControl>
+                        <FormControl fullWidth sx={{ m: 1 }}>
+                            <TextField id="standard-basic" label="Discord Tag" variant="standard" inputRef={discordRef}/>
+                        </FormControl>
+                        <FormControl fullWidth sx={{ m: 1 }}>
+                        <TextField id="outlined-multiline-flexible" label="About Me" multiline maxRows={4} inputRef={aboutMeRef}/>
+                        </FormControl>
+                        <FormControl fullWidth sx={{ m: 1 }}>
+                            <Button variant="contained" onClick={doSave}>Save Profile</Button>
+                        </FormControl>
                 </Box>
             </div>
         </div>
