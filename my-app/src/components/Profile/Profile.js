@@ -1,6 +1,4 @@
-import store from '../../store.js'
 import React from 'react'
-import Spongebob from '../../images/spongebob-welcome.gif'
 import TextField from '@mui/material/TextField'
 import Box from '@mui/material/Box'
 import FormControl from '@mui/material/FormControl'
@@ -53,9 +51,6 @@ const Auth = () => {
             <h1 >Your Profile</h1>
             <div>
                 <Box sx={{ width: 1000, height: 800, background: 'white' }} className={classes.ProfileBox}>
-                        <FormControl fullWidth sx={{ m: 1 }}>
-                            <Avatar className={classes.yellow}  src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1200px-SpongeBob_SquarePants_character.svg.png"/>
-                        </FormControl>
                         <FormControl fullWidth sx={{ m: 1 }}>
                             <TextField id="standard-basic" label="First name" variant="standard" inputRef={firstNameRef}/>
                         </FormControl>
