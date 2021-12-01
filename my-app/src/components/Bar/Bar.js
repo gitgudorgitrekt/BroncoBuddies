@@ -13,6 +13,7 @@ const Bar = () => {
                 <Button component={Link} to="/buddyfilter" variant="contained" color="primary">Buddy Filter</Button>
                 <Button component={Link} to="/register" variant="contained" color="primary">Register</Button>
                 <Button component={Link} to="/about" variant="contained" color="primary">About Us</Button>
+                <Button component={Link} to="/profile" variant="contained" color="primary">Profile</Button>
             </Toolbar>
         </AppBar>
     );
