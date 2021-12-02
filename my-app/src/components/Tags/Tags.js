@@ -9,6 +9,7 @@ import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button'
 import Checkbox from '@mui/material/Checkbox';
 import useStyles from './styles'
+import { URL } from '../../constants/urls';
 const Tags = () => {
     const genderRef = React.createRef();
     const transferRef = React.createRef();
@@ -19,20 +20,20 @@ const Tags = () => {
         console.log("sending user to home page")
         const gender = genderRef.current.querySelector('input[name=gender]:checked').value
         let transfer = transferRef.current.querySelector('input[name=transfer]:checked').value
-        if(transfer == "yes"){
+        if(transfer === "yes"){
             transfer = true;
         }
         else{
             transfer = false;
         }
         let year = yearRef.current.querySelector('input[name=year]:checked').value
-        if(year == "freshman"){
+        if(year === "freshman"){
             year = 0;
         }
-        if(year == "sophomore"){
+        if(year === "sophomore"){
             year = 1;
         }
-        if(year == "junior"){
+        if(year === "junior"){
             year = 2;
         }
         else{
@@ -44,7 +45,7 @@ const Tags = () => {
             let input = tagsInputs[i]
             let value = input.checked
             let label = input.parentNode.parentNode.innerText
-            if(value == true){
+            if(value === true){
                 tagsArray.push(label)
             }
         }
@@ -53,7 +54,7 @@ const Tags = () => {
         const data = {gender, transfer, year, tags:tagsArray}
         console.log(data)
         try{
-            const response = await window.fetch('https://broncobuddies.herokuapp.com/tags', {
+            const response = await window.fetch(URL + '/tags', {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -69,7 +70,7 @@ const Tags = () => {
           console.log(response)
           const Jason = await response.json();
 
-          if(Jason.success == true){
+          if(Jason.success === true){
             window.location.href = '/'
           }
           else{

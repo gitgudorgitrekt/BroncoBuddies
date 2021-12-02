@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl'
 import Button from '@mui/material/Button'
 import useStyles from './styles'
+import { URL } from '../../constants/urls';
 const Auth = () => {
     const usernameRef = React.createRef();
     const passwordRef = React.createRef();
@@ -14,7 +15,7 @@ const Auth = () => {
         const password = passwordRef.current.value
         const data = {username, password}
         try{
-            const response = await window.fetch('https://broncobuddies.herokuapp.com/auth/login', {
+            const response = await window.fetch(URL + '/auth/login', {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

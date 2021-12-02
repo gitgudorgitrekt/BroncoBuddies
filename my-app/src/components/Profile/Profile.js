@@ -4,6 +4,7 @@ import Box from '@mui/material/Box'
 import FormControl from '@mui/material/FormControl'
 import Button from '@mui/material/Button'
 import useStyles from './styles'
+import { URL } from '../../constants/urls';
 const Auth = () => {
     const firstNameRef = React.createRef();
     const lastNameRef = React.createRef();
@@ -18,7 +19,7 @@ const Auth = () => {
 
         try{
             const data = {firstname, lastname, discord, aboutMe}
-            const response = await window.fetch('https://broncobuddies.herokuapp.com/user/profile', {
+            const response = await window.fetch(URL + '/user/profile', {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -34,7 +35,7 @@ const Auth = () => {
           console.log(response)
           const Jason = await response.json();
 
-          if(Jason.success == true){
+          if(Jason.success === true){
             window.localStorage.setItem('firstname', firstname)
             window.localStorage.setItem('lastname', lastname)
             window.alert("Profile update saved! :)")
