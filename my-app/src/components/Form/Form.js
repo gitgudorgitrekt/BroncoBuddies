@@ -26,7 +26,7 @@ const Form =  ({ currentId, setCurrentId }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        postData.creator = window.localStorage.getItem('username');
         if(currentId) {
             dispatch(updatePost(currentId, postData));
         }
