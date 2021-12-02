@@ -20,7 +20,9 @@ const Post =  ({ post, setCurrentId }) => {
                 <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
             </div>
             <div className={classes.overlay2}>
-                <Button style={{color:'white'}} size="small" onClick={() => setCurrentId(post._id)}>
+                <Button style={{color:'white'}} size="small" onClick={() => 
+                (window.localStorage.getItem('LOGGEDIN')=='true' && window.localStorage.getItem('username')==post.creator) ? 
+                setCurrentId(post._id) : console.log("THIS IS NOT YOUR POST!")}>
                     <MoreHorizIcon fontSize="medium"/>
                 </Button>
             </div>
@@ -37,10 +39,14 @@ const Post =  ({ post, setCurrentId }) => {
                     &nbsp; Like &nbsp;
                     {post.likeCount}
                 </Button>
-                <Button size="small" color="primary" onClick={() => {dispatch(deletePost(post._id))}}>
+                {(window.localStorage.getItem('LOGGEDIN')=='true' && window.localStorage.getItem('username')==post.creator) ? 
+                (<Button size="small" color="primary" onClick={() => {dispatch(deletePost(post._id))}}>
                     <DeleteIcon fontSize="small"/>
                     Delete
-                </Button>
+                </Button>) : (
+                <Button size="small" color="primary">
+                </Button>)}
+                
             </CardActions>
         </Card>
     );

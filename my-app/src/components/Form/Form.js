@@ -46,7 +46,7 @@ const Form =  ({ currentId, setCurrentId }) => {
                     variant="outlined" 
                     label="Creator"
                     fullWidth
-                    value={postData.creator}
+                    value={window.localStorage.getItem('username')}
                     onChange={(e) => setPostData({...postData, creator: e.target.value})}/>
                 <TextField 
                     name="title" 
