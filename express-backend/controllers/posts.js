@@ -24,15 +24,15 @@ export const getPostsBySearch = async (req, res) => {
     const { searchQuery, tags } = req.query;
 
     try {
-        const title = new RegExp(searchQuery, 'i');
-        const hashtag = new RegExp(tags, 'i');
+        const title = new RegExp(searchQuery, "i");
+        const hashtag = new RegExp(tags, "i");
 
-        const posts = await PostMessage.find({ $or: [ { title }, { tags: { hashtag } } ] });
+        const posts = await PostMessage.find({ $or: [ { title }, { tags: { $in: hashtag } } ] });
         
         res.json({ data: posts });
 
     } catch (error) {
-        res.status(404).json({message: error.message});
+        res.status(404).json({message: error});
     }
 }
 
