@@ -22,7 +22,9 @@ const Home = () => {
                         <Posts setCurrentId={setCurrentId} />
                     </Grid>
                     <Grid item xs={12} sm={4}>
-                        <Form currentId={currentId} setCurrentId={setCurrentId} />
+                        {window.localStorage.getItem('LOGGEDIN')=='true' ? 
+                        (<Form currentId={currentId} setCurrentId={setCurrentId}/>):
+                        (null)}
                     </Grid>
                 </Grid>
             </Container>
