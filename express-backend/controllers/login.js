@@ -10,7 +10,7 @@ export const login = async (req, res) => {
 
   res.cookie('session', user._id, { signed: true, sameSite:'none', secure:true });
   if(result == true){
-    return res.json({ success: true, firstname:user.firstname, lastname:user.lastname });
+    return res.json({ success: true, firstname:user.firstname, lastname:user.lastname, username:user.username  });
   }
   else{
     return res.json({ success: false });

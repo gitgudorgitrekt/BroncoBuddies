@@ -35,6 +35,7 @@ const Auth = () => {
             window.localStorage.setItem('LOGGEDIN', 'true')
             window.localStorage.setItem('firstname', Jason.firstname)
             window.localStorage.setItem('lastname', Jason.lastname)
+            window.localStorage.setItem('username', Jason.username)
             window.location.href = '/'
           }
           else{
@@ -57,7 +58,7 @@ const Auth = () => {
                             <TextField id="standard-basic" label="Username" variant="standard" inputRef={usernameRef}/>
                         </FormControl>
                         <FormControl fullWidth sx={{ m: 1 }}>
-                            <TextField id="standard-basic" label="Password" variant="standard" inputRef={passwordRef}/>
+                            <TextField id="standard-basic" label="Password" type="password" variant="standard" inputRef={passwordRef}/>
                         </FormControl>
                         <FormControl fullWidth sx={{ m: 1 }}>
                             <Button variant="contained" onClick={doLogin}>Sign In</Button>
