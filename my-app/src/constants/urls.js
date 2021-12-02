@@ -1,1 +1,1 @@
-export const URL = 'http://localhost:5000' || 'https://broncobuddies.herokuapp.com';
+export const URL = 'https://broncobuddies.herokuapp.com';
